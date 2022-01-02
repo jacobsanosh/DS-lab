@@ -1,0 +1,56 @@
+#include<stdio.h>
+int rotate(int a[],int n,char d,int cr)
+{
+	if(d=='r')
+	{
+		int last;
+		for(int i=0;i<cr;i++)
+		{
+			last=a[n-1];
+			for(int j=n-1;j>0;j--)
+			{
+				a[j]=a[j-1];
+			}
+			a[0]=last;
+		}
+		
+		
+	}
+	if(d=='l')
+	{
+		int first;
+		for(int i=0;i<cr;i++)
+		{
+			first=a[0];
+			for(int j=0;j<n;j++)
+				a[j]=a[j+1];
+			a[n-1]=first;
+		}
+	}
+}
+int main()
+{
+	int n,cn;
+	char dir;
+	printf("Enter how many elements\t");
+	scanf("%d",&n);
+	int arr[n];
+	while(1)
+	{
+		printf("Enter 'l' or 'r' for rotation and the count\t ");
+		scanf(" %c %d",&dir,&cn);
+		if(dir=='l' || dir=='r')
+			break;
+		else
+			printf("wrong input\n");
+	}			
+	printf("Enter the elements one by one\n");
+	for(int i=0;i<n;i++)
+		scanf("%d",&arr[i]);
+	rotate(arr,n,dir,cn);
+	printf("rotated is\n");
+	for(int i=0;i<n;i++)
+		printf("%d\t",arr[i]);
+		
+	return 0;
+}
